@@ -26,7 +26,7 @@ weight(:,2)= 1-weight(:,1);
 rpe = zeros(size(choice)); 
 
 for n = 1:(ntrial),
-    rpe(n) = reward(n).^x0 - weight(n, 2-choice(n));% compute rpe
+    rpe(n) = reward(n) - weight(n, 2-choice(n));% compute rpe
     if n<ntrial
         weight(n+1, 2-choice(n)) = weight(n, 2-choice(n)) + alpha*rpe(n); % update chosen
         weight(n+1, 1+choice(n)) = 1-weight(n+1, 2-choice(n)); % the unchosen is the complementary weight(n, 1+choice(n));
